@@ -7,6 +7,9 @@
     --text-black: #333333;
     --bg-light: #f9f9f9;
 }
+#qvesys{
+    text-decoration:none;
+}
 
 * {
     margin: 0;
@@ -1682,4 +1685,5 @@ header {
     .menu-toggle {
         margin: 5px auto 0 auto;
     }
+
 }
