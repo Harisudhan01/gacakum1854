@@ -1,24 +1,53 @@
-window.addEventListener('load', () => {
+// --- PRELOADER & DYNAMIC PROGRESS BAR ---
+(function () {
     const preloader = document.getElementById('preloader');
     const mainContent = document.getElementById('main-content');
+    const progressBarFill = document.querySelector('.progress-bar-fill');
 
-    if (preloader) {
+    if (!preloader || !progressBarFill) return;
+
+    let progress = 0;
+    let loadFinished = false;
+
+    // Start initial progress
+    setTimeout(() => {
+        if (!loadFinished) {
+            progress = 30;
+            progressBarFill.style.width = progress + '%';
+        }
+    }, 100);
+
+    // Creep progress towards 95%
+    const idleInterval = setInterval(() => {
+        if (!loadFinished && progress < 95) {
+            progress += (Math.random() * 2); // Random small increment
+            progressBarFill.style.width = Math.min(progress, 95) + '%';
+        }
+    }, 200);
+
+    window.addEventListener('load', () => {
+        loadFinished = true;
+        clearInterval(idleInterval);
+
+        // Complete the bar
+        progressBarFill.style.width = '100%';
+
+        // Wait for the bar to finish filling (matching CSS transition)
         setTimeout(() => {
             preloader.classList.add('fade-out');
 
-            // Trigger content reveal animation
             if (mainContent) {
                 mainContent.classList.remove('content-hidden');
                 mainContent.classList.add('reveal-content');
             }
 
-            // Remove preloader from DOM after transition
             setTimeout(() => {
-                preloader.remove();
-            }, 800);
-        }, 1200); // Buffer for premium feel
-    }
-});
+                preloader.style.display = 'none';
+            }, 600);
+        }, 500);
+    });
+})();
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
