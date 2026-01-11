@@ -1,3 +1,25 @@
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const mainContent = document.getElementById('main-content');
+
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+
+            // Trigger content reveal animation
+            if (mainContent) {
+                mainContent.classList.remove('content-hidden');
+                mainContent.classList.add('reveal-content');
+            }
+
+            // Remove preloader from DOM after transition
+            setTimeout(() => {
+                preloader.remove();
+            }, 800);
+        }, 1200); // Buffer for premium feel
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
