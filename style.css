@@ -14,7 +14,7 @@
     width: 100%;
     height: 100vh;
     background: var(--primary-blue);
-    opacity: 90%;
+    opacity: 97%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1775,4 +1775,5 @@ header {
     .menu-toggle {
         margin: 5px auto 0 auto;
     }
+
 }
