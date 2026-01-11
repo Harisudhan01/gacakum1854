@@ -14,7 +14,7 @@
     width: 100%;
     height: 100vh;
     background: var(--primary-blue);
-    opacity: 97%;
+    opacity: 98.5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1777,3 +1777,4 @@ header {
     }
 
 }
+
