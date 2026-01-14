@@ -330,7 +330,7 @@ body {
 
 /* Top Strip */
 .top-bar {
-    background-color: var(--primary-blue);
+    background-color:  #00264e;
     color: var(--text-white);
     display: flex;
     justify-content: right;
@@ -338,7 +338,9 @@ body {
     padding: 5px 25px;
     font-size: 15px;
     opacity: 0;
+    border-bottom: 1px solid  #031e3d;
     /* Hidden initially for animation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .top-bar-right {
@@ -489,6 +491,7 @@ header {
 .fee-buttons {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .fee-btn {
@@ -500,7 +503,36 @@ header {
     color: #ffffff;
     cursor: pointer;
     opacity: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
     /* Hidden initially */
+}
+
+.fee-btn:hover {
+    transform: scale(1.05);
+}
+marquee{
+    width:105%;
+    margin-left:-40%;
+    color:#ffffff;
+    font-weight: bold;
+}
+.fee-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.6),
+            transparent);
+    transition: all 0.6s ease;
+}
+
+.fee-btn:hover::before {
+    left: 120%;
 }
 
 .quick-links {
@@ -1167,15 +1199,18 @@ header {
     .gallery-video-section .strength-col {
         flex: 1;
     }
-
+  
     .gallery-video-section .gallery-col {
         flex: 3;
     }
 
     .gallery-video-section .video-col {
         flex: 1;
-    }
+    }marquee{
+    display: block;
 }
+}
+
 
 .gallery-main-img {
     width: 50%;
@@ -1356,12 +1391,19 @@ header {
 @media (max-width: 992px) {
     .info-grid-section {
         grid-template-columns: repeat(2, 1fr);
+        
+    }
+    marquee{
+          display:none;
     }
 }
 
 @media (max-width: 576px) {
     .info-grid-section {
         grid-template-columns: 1fr;
+    }
+    marquee{
+        display:none;
     }
 }
 
@@ -1677,12 +1719,16 @@ header {
         flex: 0 0 45%;
         /* Two columns on tablets */
     }
+    
 }
 
 @media (max-width: 576px) {
     .footer-col {
         flex: 0 0 100%;
         /* Single column on mobile */
+    }
+    marquee{
+        display: block;
     }
 }
 
@@ -1743,6 +1789,9 @@ header {
         flex-direction: column;
         gap: 15px;
         padding: 20px;
+    }
+    marquee{
+        display: none;
     }
 
     .footer-separator {
@@ -1877,6 +1926,9 @@ header {
         justify-content: center;
         padding: 10px;
     }
+    marquee{
+        display: none;
+    }
 
     .top-bar-right {
         flex-wrap: wrap;
@@ -1915,7 +1967,9 @@ header {
     .college-details h1 {
         font-size: 16px;
     }
-
+marquee{
+        display: none;
+    }
     .college-details h2 {
         font-size: 14px;
     }
@@ -1963,6 +2017,9 @@ header {
         gap: 8px;
     }
 
+    marquee{
+        display: none;
+    }
     .top-bar {
         display: flex;
     }
